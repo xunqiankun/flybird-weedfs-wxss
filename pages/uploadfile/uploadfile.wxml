@@ -1,0 +1,150 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <view class="page-section">
+
+            <view class="weui-cells weui-cells_after-title">
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">图片来源</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <picker range="{{sourceType}}" bindchange="sourceTypeChange" value="{{sourceTypeIndex}}" mode="selector">
+                    <view class="weui-input">{{sourceType[sourceTypeIndex]}}</view>
+                  </picker>
+                </view>
+              </view>
+
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">图片质量</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <picker range="{{sizeType}}" bindchange="sizeTypeChange" value="{{sizeTypeIndex}}" mode="selector">
+                    <view class="weui-input">{{sizeType[sizeTypeIndex]}}</view>
+                  </picker>
+                </view>
+              </view>
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">数量限制</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <picker range="{{count}}" bindchange="countChange" value="{{countIndex}}" mode="selector">
+                    <view class="weui-input">{{count[countIndex]}}</view>
+                  </picker>
+                </view>
+              </view>
+            </view>
+
+            <view class="weui-cells">
+              <view class="weui-cell">
+                <view class="weui-cell__bd">
+                  <view class="weui-uploader">
+                    <view class="weui-uploader__hd">
+                      <view class="weui-uploader__title">点击可预览选好的图片</view>
+                      <view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>
+                    </view>
+                    <view class="weui-uploader__bd">
+                      <view class="weui-uploader__files">
+                        <block wx:for="{{imageList}}" wx:for-item="image">
+                          <view class="weui-uploader__file">
+                            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                          </view>
+                        </block>
+                      </view>
+                      <view class="weui-uploader__input-box">
+                        <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <view class="page-section">
+            <view class="weui-cells weui-cells_after-title">
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">视频来源</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <picker range="{{sourceType}}" bindchange="sourceTypeChange" value="{{sourceTypeIndex}}">
+                    <view class="weui-input">{{sourceType[sourceTypeIndex]}}</view>
+                  </picker>
+                </view>
+              </view>
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">摄像头</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <picker range="{{camera}}" bindchange="cameraChange" value="{{cameraIndex}}">
+                    <view class="weui-input">{{camera[cameraIndex]}}</view>
+                  </picker>
+                </view>
+              </view>
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">拍摄长度</view>
+                </view>
+                <view class="weui-cell__bd">
+                  <picker range="{{duration}}" bindchange="durationChange" value="{{durationIndex}}">
+                    <view class="weui-input">{{duration[durationIndex]}}</view>
+                  </picker>
+                </view>
+              </view>
+            </view>
+            <!--<view class="page-section tc">
+              <video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"
+                binderror="videoErrorCallback" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
+
+              <view class="weui-cells">
+                <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                    <view class="weui-label">弹幕内容</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                    <input bindblur="bindInputBlur" class="weui-input" type="text" placeholder="在此处输入弹幕内容" />
+                  </view>
+                </view>
+              </view>
+              <view class="btn-area">
+                <button bindtap="bindSendDanmu" class="page-body-button" type="primary" formType="submit">发送弹幕</button>
+              </view>
+            </view>-->
+
+            <view class="page-body-info">
+              <!--<block wx:if="{{src === ''}}">-->
+                <view class="image-plus image-plus-nb" bindtap="chooseVideo">
+                  <view class="image-plus-horizontal"></view>
+                  <view class="image-plus-vertical"></view>
+                </view>
+                <view class="image-plus-text">添加视频</view>
+              <!--</block>-->
+              <!--<block wx:if="{{src != ''}}">-->
+                <video src="{{src}}" class="video" style="height:500px"></video>
+              <!--</block>-->
+
+            </view>
+          </view>
+        </view>
+
+
+      </view>
+    </view>
+  </view>
+</view>

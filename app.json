@@ -1,0 +1,78 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/uploadfile/uploadfile",
+    "pages/addresslist/addresslist",
+    "pages/logs/logs",
+    "pages/me/me",
+
+
+    "example/index",
+
+    "example/button/button",
+    "example/list/list",
+    "example/input/input",
+    "example/slider/slider",
+    "example/uploader/uploader",
+
+    "example/article/article",
+    "example/badge/badge",
+    "example/flex/flex",
+    "example/footer/footer",
+    "example/gallery/gallery",
+    "example/grid/grid",
+    "example/icons/icons",
+    "example/loadmore/loadmore",
+    "example/panel/panel",
+    "example/preview/preview",
+    "example/progress/progress",
+
+    "example/actionsheet/actionsheet",
+    "example/dialog/dialog",
+    "example/msg/msg",
+    "example/msg/msg_success",
+    "example/msg/msg_fail",
+    "example/picker/picker",
+    "example/toast/toast",
+
+    "example/navbar/navbar",
+    "example/tabbar/tabbar",
+
+    "example/searchbar/searchbar"
+  ],
+  "tabBar": {
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/image/home_bfbfbf.png",
+        "selectedIconPath": "assets/image/home_o_3366CC.png"
+      },
+      {
+        "pagePath": "example/index",
+        "text": "demo",
+        "iconPath": "assets/image/demo_bfbfbf.png",
+        "selectedIconPath": "assets/image/demo_o_1296db.png"
+      },
+      {
+        "pagePath": "pages/addresslist/addresslist",
+        "text": "通讯录",
+        "iconPath": "assets/image/txl.png",
+        "selectedIconPath": "assets/image/txl_o.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我",
+        "iconPath": "assets/image/me_bfbfbf.png",
+        "selectedIconPath": "assets/image/me_o_3366CC.png"
+      }
+    ]
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#336699",
+    "navigationBarTitleText": "非鸟网",
+    "navigationBarTextStyle":"white"
+  }
+}

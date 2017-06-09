@@ -1,0 +1,63 @@
+<!--index.wxml-->
+<swiper indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" bindtap="bindViewTap" class="slide-image" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class="page">
+  <view class="weui-flex" style="flex-direction:row;flex-wrap:wrap;justify-content:center">
+    <view class="weui-flex__item placeholder">
+      <view class="weui-flex" style="flex-direction:column;align-items:center">
+        <view class="weiui-flex__item" style="justify-content:center;">
+          <view style="position: relative;">
+            <image src="../../assets/image/todo3.png" style="width: 45px; height: 45px;margin-top: 10px;" />
+            <view class="weui-badge" style="position: absolute;top: 5px;right: -5px;">8</view>
+          </view>
+        </view>
+        <view class="weiui-flex__item" style=" height: 25px;margin-bottom: 5px;font-size:14px;color:#FFFFFF;">
+          待办任务
+        </view>
+      </view>
+    </view>
+    <view class="weui-flex__item placeholder" bindtap="toUpLoadFile">
+      <view class="weui-flex" style="flex-direction:column;align-items:center">
+        <view class="weiui-flex__item" style="justify-content:center;">
+          <view style="position: relative;">
+            <image src="../../assets/image/addtask.png" style="width: 45px; height: 45px;margin-top: 10px;" />
+            <!--<view class="weui-badge" style="position: absolute;top: 5px;right: -5px;">8</view>-->
+          </view>
+        </view>
+        <view class="weiui-flex__item" style=" height: 25px;margin-bottom: 5px;font-size:14px;color:#FFFFFF;">
+          创建任务
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title">消息列表</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view wx:if="{{userMsg.length > 0}}">
+      <!--<view wx:for="{{userMessage}}" wx:for-index="idx" wx:for-item="message" style="width:100%">-->
+        <navigator wx:for="{{userMsg}}" wx:for-index="idx" wx:for-item="msg" url="{{msg.navurl}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <image src="{{msg.sendericon}}" class="msg-icon"></image>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="msg-sendername">{{msg.sendername}}</view>
+            <view class="msg-msgtitle">{{msg.msgtitle}}</view>
+          </view>
+          <view class="weui-cell__ft">
+            <view class="msg-sendtime">{{msg.sendtime}}</view>
+            <view class="msg-stateicon">{{msg.stateicon}}</view>
+          </view>
+        </navigator>
+      <!--</view>-->
+    </view>
+    <!--<view wx:else>
+      <view class="classname">您没有新消息哦</view>
+    </view>-->
+  </view>
+
+</view>
